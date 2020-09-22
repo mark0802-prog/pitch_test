@@ -1,4 +1,10 @@
 <h1>Pitch Test トップページ</h1>
 <p><%= link_to "音程を確認する", pitches_path %></p>
 <p><%= link_to "クイズに挑戦する", quizes_path %></p>
-
+<% if user_signed_in? %>
+  <%= "#{current_user.nickname}でログイン中" %>
+  <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+<% else %>
+  <p><%= link_to "ユーザ登録をする", new_user_registration_path %></p>
+  <p><%= link_to "ログイン", new_user_session_path %></p>
+<% end %>

@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計
 
-Things you may want to cover:
+## usersテーブル
 
-* Ruby version
+|Column|Type|Options|
+|---|---|---|
+|nickname|string|null: false, unique: true|
+|password|string|null: false|
+|password_confirmation|string|null: false|
 
-* System dependencies
+### アソシエーション
 
-* Configuration
+- has_one :total_score
+- has_many :daily_score
 
-* Database creation
+## total_scoresテーブル
 
-* Database initialization
+|Column|Type|Options|
+|---|---|---|
+|user|references|null: false, foreign_key: true|
+|total_correct_count|int|null: false|
+|total_wrong_count|int|null: false|
+|total_time|int|null: false|
 
-* How to run the test suite
+### アソシエーション
 
-* Services (job queues, cache servers, search engines, etc.)
+-belongs_to :user
 
-* Deployment instructions
+### アソシエーション
 
-* ...
+- has_one :total_score
+- has_many :daily_score
+
+## daily_scoresテーブル
+
+|Column|Type|Options|
+|---|---|---|
+|user|references|null: false, foreign_key: true|
+|daily_correct_count|int|null: false|
+|daily_wrong_count|int|null: false|
+|daily_time|int|null: false|
+
+### アソシエーション
+
+-belongs_to :user
