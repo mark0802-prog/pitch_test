@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :nickname, uniqueness: true, presence: true
 
+  has_one :total_score
+
   def email_required?
     false
   end
