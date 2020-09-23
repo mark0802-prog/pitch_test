@@ -64,7 +64,7 @@ function quiz() {
         daily_correct_rate.innerHTML = Math.round(parseInt(daily_correct_count.value) / (parseInt(daily_correct_count.value) + parseInt(daily_wrong_count.value)) * 100)
         daily_average_time.innerHTML = Math.round(parseInt(daily_time.value) / parseInt(daily_correct_count.value))
         chime_correct.play()
-        if (submit != null) {
+        if (submit_buttons != null) {
           submit_buttons.forEach((submit_button) => {
             submit_button.click()
           })
@@ -81,7 +81,7 @@ function quiz() {
         daily_wrong_count.value = parseInt(daily_wrong_count.value) + 1
         daily_correct_rate.innerHTML = Math.round(parseInt(daily_correct_count.value) / (parseInt(daily_correct_count.value) + parseInt(daily_wrong_count.value)) * 100)
         chime_wrong.play()
-        if (submit != null) {
+        if (submit_buttons != null) {
           submit_buttons.forEach((submit_button) => {
             submit_button.click()
           })
