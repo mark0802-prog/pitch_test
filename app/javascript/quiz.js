@@ -52,7 +52,9 @@ function quiz() {
         correct_rate.innerHTML = Math.round(parseInt(correct_count.value) / (parseInt(correct_count.value) + parseInt(wrong_count.value)) * 100)
         average_time.innerHTML = Math.round(parseInt(total_time.value) / parseInt(correct_count.value))
         chime_correct.play()
-        submit.click()
+        if (submit != null) {
+          submit.click()
+        }
         start_button.style.display = "inline"
         again_button.style.display = "none"
         answers.forEach((answer) => {
@@ -63,7 +65,9 @@ function quiz() {
         wrong_count.value = parseInt(wrong_count.value) + 1
         correct_rate.innerHTML = Math.round(parseInt(correct_count.value) / (parseInt(correct_count.value) + parseInt(wrong_count.value)) * 100)
         chime_wrong.play()
-        submit.click()
+        if (submit != null) {
+          submit.click()
+        }
       }
     }
     answer.addEventListener("click", correct_or_wrong)

@@ -7,13 +7,16 @@ class QuizesController < ApplicationController
     return unless @total_score.nil?
 
     @total_score = UserScore.new(user_id: current_user.id)
-    @total_score.save
-    redirect_to quizes_path
+    if @total_score.save
+      redirect_to quizes_path
+    else
+      redirect_to root_path
+    end
   end
 
   def update
     @total_score = UserScore.new(user_id: current_user.id).find
-    @total_score.update(params_total_score)
+    redirect_to root_path unless @total_score.update(params_total_score)
   end
 
   private
