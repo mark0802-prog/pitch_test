@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_051109) do
+ActiveRecord::Schema.define(version: 2020_09_23_092504) do
+
+  create_table "daily_scores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "daily_correct_count", null: false
+    t.integer "daily_wrong_count", null: false
+    t.integer "daily_time", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_daily_scores_on_user_id"
+  end
 
   create_table "total_scores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -34,5 +44,6 @@ ActiveRecord::Schema.define(version: 2020_09_23_051109) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "daily_scores", "users"
   add_foreign_key "total_scores", "users"
 end
