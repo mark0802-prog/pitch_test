@@ -1,13 +1,28 @@
 <h1>クイズ</h1>
 <p><%= link_to "戻る", root_path %></p>
 <p><%= link_to "音程を確認する", pitches_path %></p>
-<div class="data_box">
-  <div class="data">正解：<span id="correct_count">0</span></div>
-  <div class="data">間違い：<span id="wrong_count">0</span></div>
-  <div class="data">正答率：<span id="correct_rate">0</span> %</div>
-  <div class="data">経過時間：<span id="total_time">0</span> s</div>
-  <div class="data">平均正解時間：<span id="average_time">0</span> s</div>
-</div>
+<% if user_signed_in? %>
+  <%= form_with model: @total_score, url: quize_path(current_user.id), local: true do |f| %>
+    <div class="data_box">
+      <div class="data">正解：<%= f.text_field :total_correct_count, readonly: true, id: "correct_count" %></div>
+      <div class="data">間違い：<%= f.text_field :total_wrong_count, readonly: true, id: "wrong_count" %></div>
+      <div class="data">正答率：<span id="correct_rate">0</span> %</div>
+      <div class="data">経過時間：<%= f.text_field :total_time, readonly: true, id: "total_time" %> s</div>
+      <div class="data">平均正解時間：<span id="average_time">0</span> s</div>
+    </div>
+    <%= f.submit id: "submit", style: "display:none;", "data-disable-with": false %>
+  <% end %>
+<% else %>
+  <%= form_with local: true do |f| %>
+    <div class="data_box">
+      <div class="data">正解：<%= f.text_field :total_correct_count, value: 0, readonly: true, id: "correct_count" %></div>
+      <div class="data">間違い：<%= f.text_field :total_wrong_count, value: 0, readonly: true, id: "wrong_count" %></div>
+      <div class="data">正答率：<span id="correct_rate">0</span> %</div>
+      <div class="data">経過時間：<%= f.text_field :total_time, value: 0, readonly: true, id: "total_time" %> s</div>
+      <div class="data">平均正解時間：<span id="average_time">0</span> s</div>
+    </div>
+  <% end %>
+<% end %>
 <%= button_tag "push!", id: "start_button" %>
 <%= button_tag "hear again!", id: "again_button" %>
 <br>

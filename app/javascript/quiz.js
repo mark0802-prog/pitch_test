@@ -6,6 +6,7 @@ function quiz() {
   const wrong_count = document.getElementById("wrong_count")
   const correct_rate = document.getElementById("correct_rate")
   const total_time = document.getElementById("total_time")
+  const current_total_time = parseInt(total_time.value)
   const average_time = document.getElementById("average_time")
   const start_button = document.getElementById("start_button")
   const again_button = document.getElementById("again_button")
@@ -14,12 +15,16 @@ function quiz() {
   const correct = document.getElementById("correct")
   const chime_correct = document.getElementById("chime_correct")
   const chime_wrong = document.getElementById("chime_wrong")
+  const submit = document.getElementById("submit")
 
   again_button.style.display = "none"
+  correct_rate.innerHTML = Math.round(parseInt(correct_count.value) / (parseInt(correct_count.value) + parseInt(wrong_count.value)) * 100)
+  average_time.innerHTML = Math.round(parseInt(total_time.value) / parseInt(correct_count.value))
 
   start_button.addEventListener("click", () => {
     if (!total_time.getAttribute("set")) {
-      setInterval(() => total_time.innerHTML = Math.floor(Tone.now()), 1000);
+      const now = Tone.now()
+      setInterval(() => total_time.value = current_total_time + Math.floor(Tone.now() - now), 1000);
     }
     total_time.setAttribute("set", true)
 
@@ -43,10 +48,11 @@ function quiz() {
       const note_answer = answer.innerHTML
       if (note_answer==note_random) {
         correct.innerHTML = '<p>Correct!</p>'
-        correct_count.innerHTML = parseInt(correct_count.innerHTML) + 1
-        correct_rate.innerHTML = Math.round(parseInt(correct_count.innerHTML) / (parseInt(correct_count.innerHTML) + parseInt(wrong_count.innerHTML)) * 100)
-        average_time.innerHTML = Math.round(parseInt(total_time.innerHTML) / parseInt(correct_count.innerHTML))
+        correct_count.value = parseInt(correct_count.value) + 1
+        correct_rate.innerHTML = Math.round(parseInt(correct_count.value) / (parseInt(correct_count.value) + parseInt(wrong_count.value)) * 100)
+        average_time.innerHTML = Math.round(parseInt(total_time.value) / parseInt(correct_count.value))
         chime_correct.play()
+        submit.click()
         start_button.style.display = "inline"
         again_button.style.display = "none"
         answers.forEach((answer) => {
@@ -54,9 +60,10 @@ function quiz() {
         })
       } else {
         correct.innerHTML = '<p>Wrong!</p>'
-        wrong_count.innerHTML = parseInt(wrong_count.innerHTML) + 1
-        correct_rate.innerHTML = Math.round(parseInt(correct_count.innerHTML) / (parseInt(correct_count.innerHTML) + parseInt(wrong_count.innerHTML)) * 100)
+        wrong_count.value = parseInt(wrong_count.value) + 1
+        correct_rate.innerHTML = Math.round(parseInt(correct_count.value) / (parseInt(correct_count.value) + parseInt(wrong_count.value)) * 100)
         chime_wrong.play()
+        submit.click()
       }
     }
     answer.addEventListener("click", correct_or_wrong)
