@@ -6,13 +6,13 @@ function quiz() {
   const total_wrong_count = document.getElementById("total_wrong_count")
   const total_correct_rate = document.getElementById("total_correct_rate")
   const total_time = document.getElementById("total_time")
-  const current_total_time = parseInt(total_time.value)
+  let current_total_time = parseInt(total_time.value)
   const total_average_time = document.getElementById("total_average_time")
   const daily_correct_count = document.getElementById("daily_correct_count")
   const daily_wrong_count = document.getElementById("daily_wrong_count")
   const daily_correct_rate = document.getElementById("daily_correct_rate")
   const daily_time = document.getElementById("daily_time")
-  const current_daily_time = parseInt(daily_time.value)
+  let current_daily_time = parseInt(daily_time.value)
   const daily_average_time = document.getElementById("daily_average_time")
   const start_button = document.getElementById("start_button")
   const again_button = document.getElementById("again_button")
@@ -30,12 +30,9 @@ function quiz() {
   daily_average_time.innerHTML = Math.round(parseInt(daily_time.value) / parseInt(daily_correct_count.value))
 
   start_button.addEventListener("click", () => {
-    if (!total_time.getAttribute("set")) {
-      const now = Tone.now()
-      setInterval(() => total_time.value = current_total_time + Math.floor(Tone.now() - now), 1000)
-      setInterval(() => daily_time.value = current_daily_time + Math.floor(Tone.now() - now), 1000)
-    }
-    total_time.setAttribute("set", true)
+    const now = Tone.now()
+    this.total_intervalID = setInterval(() => total_time.value = current_total_time + Math.floor(Tone.now() - now), 1000)
+    this.daily_intervalID = setInterval(() => daily_time.value = current_daily_time + Math.floor(Tone.now() - now), 1000)
 
     this.note_random = note[Math.floor(Math.random()*note.length)]
     synth.triggerAttackRelease(note_random, "4n")
@@ -74,6 +71,10 @@ function quiz() {
         answers.forEach((answer) => {
           answer.style.visibility = "hidden"
         })
+        clearInterval(total_intervalID)
+        current_total_time = parseInt(total_time.value)
+        clearInterval(daily_intervalID)
+        current_daily_time = parseInt(daily_time.value)
       } else {
         correct.innerHTML = '<p>Wrong!</p>'
         total_wrong_count.value = parseInt(total_wrong_count.value) + 1
