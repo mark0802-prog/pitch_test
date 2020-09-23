@@ -1,0 +1,2 @@
+class TotalScore < ApplicationRecord
+end

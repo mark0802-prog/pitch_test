@@ -20,9 +20,9 @@
 |Column|Type|Options|
 |---|---|---|
 |user|references|null: false, foreign_key: true|
-|total_correct_count|int|null: false|
-|total_wrong_count|int|null: false|
-|total_time|int|null: false|
+|total_correct_count|integer|null: false|
+|total_wrong_count|integer|null: false|
+|total_time|integer|null: false|
 
 ### アソシエーション
 
@@ -38,9 +38,9 @@
 |Column|Type|Options|
 |---|---|---|
 |user|references|null: false, foreign_key: true|
-|daily_correct_count|int|null: false|
-|daily_wrong_count|int|null: false|
-|daily_time|int|null: false|
+|daily_correct_count|integer|null: false|
+|daily_wrong_count|integer|null: false|
+|daily_time|integer|null: false|
 
 ### アソシエーション
 
