@@ -7,17 +7,17 @@
     <div class="data_box">
       <div class="data">正解：<%= f.text_field :total_correct_count, readonly: true, id: "total_correct_count" %></div>
       <div class="data">間違い：<%= f.text_field :total_wrong_count, readonly: true, id: "total_wrong_count" %></div>
-      <div class="data">正答率：<span id="total_correct_rate">0</span> %</div>
+      <div class="data">正答率：<%= f.text_field :total_correct_rate, readonly: true, id: "total_correct_rate" %> %</div>
       <div class="data">経過時間：<%= f.text_field :total_time, readonly: true, id: "total_time" %> s</div>
-      <div class="data">平均正解時間：<span id="total_average_time">0</span> s</div>
+      <div class="data">平均正解時間：<%= f.text_field :total_average_time, readonly: true, id: "total_average_time" %> s</div>
     </div>
     <p>Daily Score</p>
     <div class="data_box">
       <div class="data">正解：<%= f.text_field :daily_correct_count, readonly: true, id: "daily_correct_count" %></div>
       <div class="data">間違い：<%= f.text_field :daily_wrong_count, readonly: true, id: "daily_wrong_count" %></div>
-      <div class="data">正答率：<span id="daily_correct_rate">0</span> %</div>
+      <div class="data">正答率：<%= f.text_field :daily_correct_rate, readonly: true, id: "daily_correct_rate" %> %</div>
       <div class="data">経過時間：<%= f.text_field :daily_time, readonly: true, id: "daily_time" %> s</div>
-      <div class="data">平均正解時間：<span id="daily_average_time">0</span> s</div>
+      <div class="data">平均正解時間：<%= f.text_field :daily_average_time, readonly: true, id: "daily_average_time" %> s</div>
     </div>
     <%= f.submit id: "submit", style: "display:none;", "data-disable-with": false %>
   <% end %>
@@ -27,16 +27,16 @@
     <div class="data_box">
       <div class="data">正解：<%= f.text_field :total_correct_count, value: 0, readonly: true, id: "total_correct_count" %></div>
       <div class="data">間違い：<%= f.text_field :total_wrong_count, value: 0, readonly: true, id: "total_wrong_count" %></div>
-      <div class="data">正答率：<span id="total_correct_rate">0</span> %</div>
+      <div class="data">正答率：<%= f.text_field :total_correct_rate, value: 0, readonly: true, id: "total_correct_rate" %> %</div>
       <div class="data">経過時間：<%= f.text_field :total_time, value: 0, readonly: true, id: "total_time" %> s</div>
-      <div class="data">平均正解時間：<span id="total_average_time">0</span> s</div>
+      <div class="data">平均正解時間：<%= f.text_field :total_average_time, value: 0, readonly: true, id: "total_average_time" %> s</div>
     </div>
     <div class="data_box", style='display:none;'>
       <div class="data">正解：<%= f.text_field :daily_correct_count, value: 0, readonly: true, id: "daily_correct_count" %></div>
       <div class="data">間違い：<%= f.text_field :daily_wrong_count, value: 0, readonly: true, id: "daily_wrong_count" %></div>
-      <div class="data">正答率：<span id="daily_correct_rate">0</span> %</div>
+      <div class="data">正答率：<%= f.text_field :daily_correct_rate, value: 0, readonly: true, id: "daily_correct_rate" %> %</div>
       <div class="data">経過時間：<%= f.text_field :daily_time, value: 0, readonly: true, id: "daily_time" %> s</div>
-      <div class="data">平均正解時間：<span id="daily_average_time">0</span> s</div>
+      <div class="data">平均正解時間：<%= f.text_field :daily_average_time, value: 0, readonly: true, id: "daily_average_time" %> s</div>
     </div>
   <% end %>
 <% end %>
