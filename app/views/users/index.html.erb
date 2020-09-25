@@ -8,3 +8,43 @@
   <p><%= link_to "ユーザ登録をする", new_user_registration_path %></p>
   <p><%= link_to "ログイン", new_user_session_path %></p>
 <% end %>
+
+<div class="ranking">
+  <h3>Total 正解数ランキング</h3>
+  <table>
+    <tr>
+      <th>順位</th> <th>nickname</th> <th>Total 正解数</th>
+    </tr>
+    <% @total_scores.each_with_index do |total_score, i| %>
+      <% if i % 2 == 0 %>
+        <tr class="even">
+          <td><%= i+1 %></td> <td><%= total_score.user.nickname %></td> <td><%= total_score.total_correct_count %></td>
+        </tr>
+      <% else %>
+        <tr class="odd">
+          <td><%= i+1 %></td> <td><%= total_score.user.nickname %></td> <td><%= total_score.total_correct_count %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="ranking">
+  <h3>本日の 正解数ランキング</h3>
+  <table>
+    <tr>
+      <th>順位</th> <th>nickname</th> <th>本日の 正解数</th>
+    </tr>
+    <% @daily_scores.each_with_index do |daily_score, i| %>
+      <% if i % 2 == 0 %>
+        <tr class="even">
+          <td><%= i+1 %></td> <td><%= daily_score.user.nickname %></td> <td><%= daily_score.daily_correct_count %></td>
+        </tr>
+      <% else %>
+        <tr class="odd">
+          <td><%= i+1 %></td> <td><%= daily_score.user.nickname %></td> <td><%= daily_score.daily_correct_count %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>

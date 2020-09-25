@@ -1,3 +1,31 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ranking {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: right;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+  border-right: 1px solid black;
+}
+
+th {
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+
+.even {
+  background-color: rgba($color: rgb(0, 255, 255), $alpha: 0.3);
+}
