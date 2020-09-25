@@ -13,7 +13,7 @@
   <h3>Total 正解数ランキング</h3>
   <table>
     <tr>
-      <th>順位</th> <th>nickname</th> <th>Total 正解数</th>
+      <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 正解数</th>
     </tr>
     <% @total_scores.each_with_index do |total_score, i| %>
       <% if i % 2 == 0 %>
@@ -33,7 +33,7 @@
   <h3>本日の 正解数ランキング</h3>
   <table>
     <tr>
-      <th>順位</th> <th>nickname</th> <th>本日の 正解数</th>
+      <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 正解数</th>
     </tr>
     <% @daily_scores.each_with_index do |daily_score, i| %>
       <% if i % 2 == 0 %>
