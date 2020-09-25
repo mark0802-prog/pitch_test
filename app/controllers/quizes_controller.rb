@@ -14,7 +14,9 @@ class QuizesController < ApplicationController
   private
 
   def params_scores
-    params.require(:user_score).permit(:total_correct_count, :total_wrong_count, :total_correct_rate, :total_time, :total_average_time,
-                                       :daily_correct_count, :daily_wrong_count, :daily_correct_rate, :daily_time, :daily_average_time).merge(user_id: current_user.id)
+    params.require(:user_score).permit(:total_correct_count, :total_wrong_count, :total_correct_rate,
+                                       :total_time, :total_average_time,
+                                       :daily_correct_count, :daily_wrong_count, :daily_correct_rate,
+                                       :daily_time, :daily_average_time).merge(user_id: current_user.id)
   end
 end
