@@ -22,7 +22,9 @@
 |user|references|null: false, foreign_key: true|
 |total_correct_count|integer|null: false|
 |total_wrong_count|integer|null: false|
+|total_correct_rate|integer|null: false|
 |total_time|integer|null: false|
+|total_average_time|integer|null: false|
 
 ### アソシエーション
 
@@ -40,7 +42,9 @@
 |user|references|null: false, foreign_key: true|
 |daily_correct_count|integer|null: false|
 |daily_wrong_count|integer|null: false|
+|daily_correct_rate|integer|null: false|
 |daily_time|integer|null: false|
+|daily_average_time|integer|null: false|
 
 ### アソシエーション
 
