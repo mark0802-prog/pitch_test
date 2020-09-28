@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2020_09_23_092504) do
     t.integer "daily_correct_count", null: false
     t.integer "daily_wrong_count", null: false
     t.integer "daily_correct_rate", null: false
-    t.integer "daily_time", null: false
-    t.integer "daily_average_time", null: false
+    t.float "daily_time", null: false
+    t.float "daily_average_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_daily_scores_on_user_id"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2020_09_23_092504) do
     t.integer "total_correct_count", null: false
     t.integer "total_wrong_count", null: false
     t.integer "total_correct_rate", null: false
-    t.integer "total_time", null: false
-    t.integer "total_average_time", null: false
+    t.float "total_time", null: false
+    t.float "total_average_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_total_scores_on_user_id", unique: true

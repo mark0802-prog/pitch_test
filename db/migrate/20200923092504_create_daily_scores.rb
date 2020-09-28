@@ -5,8 +5,8 @@ class CreateDailyScores < ActiveRecord::Migration[6.0]
       t.integer :daily_correct_count, null: false
       t.integer :daily_wrong_count, null: false
       t.integer :daily_correct_rate, null: false
-      t.integer :daily_time, null: false
-      t.integer :daily_average_time, null: false
+      t.float :daily_time, null: false
+      t.float :daily_average_time, null: false
 
       t.timestamps
     end

@@ -19,12 +19,12 @@
 
 |Column|Type|Options|
 |---|---|---|
-|user|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true, index: {unique: true}|
 |total_correct_count|integer|null: false|
 |total_wrong_count|integer|null: false|
 |total_correct_rate|integer|null: false|
-|total_time|integer|null: false|
-|total_average_time|integer|null: false|
+|total_time|float|null: false|
+|total_average_time|float|null: false|
 
 ### アソシエーション
 
@@ -43,8 +43,8 @@
 |daily_correct_count|integer|null: false|
 |daily_wrong_count|integer|null: false|
 |daily_correct_rate|integer|null: false|
-|daily_time|integer|null: false|
-|daily_average_time|integer|null: false|
+|daily_time|float|null: false|
+|daily_average_time|float|null: false|
 
 ### アソシエーション
 

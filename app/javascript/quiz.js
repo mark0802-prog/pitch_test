@@ -29,14 +29,14 @@ function quiz() {
 
   again_button.style.display = "none"
   total_correct_rate.value = calc_rate(total_correct_count.value, total_wrong_count.value)
-  total_average_time.value = Math.round(parseInt(total_time.value) / parseInt(total_correct_count.value))
+  total_average_time.value = Math.round(parseInt(total_time.value) / parseInt(total_correct_count.value) * 100) / 100
   daily_correct_rate.value = calc_rate(daily_correct_count.value, daily_wrong_count.value)
-  daily_average_time.value = Math.round(parseInt(daily_time.value) / parseInt(daily_correct_count.value))
+  daily_average_time.value = Math.round(parseInt(daily_time.value) / parseInt(daily_correct_count.value) * 100) / 100
 
   start_button.addEventListener("click", () => {
     const now = Tone.now()
-    this.total_intervalID = setInterval(() => total_time.value = current_total_time + Math.floor(Tone.now() - now), 100)
-    this.daily_intervalID = setInterval(() => daily_time.value = current_daily_time + Math.floor(Tone.now() - now), 100)
+    this.total_intervalID = setInterval(() => total_time.value = current_total_time + Math.floor((Tone.now() - now) * 10) / 10, 10)
+    this.daily_intervalID = setInterval(() => daily_time.value = current_daily_time + Math.floor((Tone.now() - now) * 10) / 10, 10)
 
     this.note_random = note[Math.floor(Math.random()*note.length)]
     synth.triggerAttackRelease(note_random, "4n")
@@ -60,10 +60,10 @@ function quiz() {
         correct.innerHTML = '<p>Correct!</p>'
         total_correct_count.value = parseInt(total_correct_count.value) + 1
         total_correct_rate.value = calc_rate(total_correct_count.value, total_wrong_count.value)
-        total_average_time.value = Math.round(parseInt(total_time.value) / parseInt(total_correct_count.value))
+        total_average_time.value = Math.round(parseInt(total_time.value) / parseInt(total_correct_count.value) * 100) / 100
         daily_correct_count.value = parseInt(daily_correct_count.value) + 1
         daily_correct_rate.value = calc_rate(daily_correct_count.value, daily_wrong_count.value)
-        daily_average_time.value = Math.round(parseInt(daily_time.value) / parseInt(daily_correct_count.value))
+        daily_average_time.value = Math.round(parseInt(daily_time.value) / parseInt(daily_correct_count.value) * 100) / 100
         chime_correct.play()
         if (submit_buttons != null) {
           submit_buttons.forEach((submit_button) => {
