@@ -115,7 +115,7 @@
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 平均正解時間</th>
     </tr>
-    <% @daily_correct_rate.each_with_index do |score, i| %>
+    <% @daily_average_time.each_with_index do |score, i| %>
       <% if i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_average_time %> s</td>
