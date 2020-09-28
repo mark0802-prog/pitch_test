@@ -11,6 +11,9 @@
 
 <div class="ranking">
   <h3>Total 正解数ランキング</h3>
+  <% if user_signed_in? %>
+    <%= "#{current_user.nickname}さんの順位は、#{@total_correct_count.size}人中#{@user_rank_tcc}位です" %>
+  <% end %>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 正解数</th>
@@ -31,6 +34,9 @@
 
 <div class="ranking">
   <h3>本日の 正解数ランキング</h3>
+  <% if user_signed_in? %>
+    <%= "#{current_user.nickname}さんの順位は、#{@daily_correct_count.size}人中#{@user_rank_dcc}位です" %>
+  <% end %>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 正解数</th>
@@ -51,6 +57,9 @@
 
 <div class="ranking">
   <h3>Total 正答率ランキング</h3>
+  <% if user_signed_in? %>
+    <%= "#{current_user.nickname}さんの順位は、#{@total_correct_rate.size}人中#{@user_rank_tcr}位です" %>
+  <% end %>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 正答率</th>
@@ -71,6 +80,9 @@
 
 <div class="ranking">
   <h3>本日の 正答率ランキング</h3>
+  <% if user_signed_in? %>
+    <%= "#{current_user.nickname}さんの順位は、#{@daily_correct_rate.size}人中#{@user_rank_dcr}位です" %>
+  <% end %>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 正答率</th>
@@ -91,6 +103,9 @@
 
 <div class="ranking">
   <h3>Total 平均正解時間ランキング</h3>
+  <% if user_signed_in? %>
+    <%= "#{current_user.nickname}さんの順位は、#{@total_average_time.size}人中#{@user_rank_tat}位です" %>
+  <% end %>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 平均正解時間</th>
@@ -111,6 +126,9 @@
 
 <div class="ranking">
   <h3>本日の 平均正解時間ランキング</h3>
+  <% if user_signed_in? %>
+    <%= "#{current_user.nickname}さんの順位は、#{@daily_average_time.size}人中#{@user_rank_dat}位です" %>
+  <% end %>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 平均正解時間</th>

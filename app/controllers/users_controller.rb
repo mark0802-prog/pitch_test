@@ -12,5 +12,22 @@ class UsersController < ApplicationController
     @daily_average_time = DailyScore.includes(:user)
                                     .where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
                                     .order(:daily_average_time)
+    return if !user_signed_in?
+
+    @user_rank_tcc = user_rank(@total_correct_count)
+    @user_rank_dcc = user_rank(@daily_correct_count)
+    @user_rank_tcr = user_rank(@total_correct_rate)
+    @user_rank_dcr = user_rank(@daily_correct_rate)
+    @user_rank_tat = user_rank(@total_average_time)
+    @user_rank_dat = user_rank(@daily_average_time)
+  end
+
+  private
+
+  def user_rank(type)
+    type.each_with_index do |user_id, i|
+      return i+1 if current_user.id == user_id[:user_id]
+    end
+    return "-"
   end
 end
