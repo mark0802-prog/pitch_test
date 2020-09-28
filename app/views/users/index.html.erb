@@ -19,6 +19,7 @@
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 正解数</th>
     </tr>
     <% @total_correct_count.each_with_index do |score, i| %>
+      <% break if i >= 20 %>
       <% if i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_count %></td>
@@ -42,6 +43,7 @@
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 正解数</th>
     </tr>
     <% @daily_correct_count.each_with_index do |score, i| %>
+      <% break if i >= 20 %>
       <% if i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_correct_count %></td>
@@ -65,6 +67,7 @@
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 正答率</th>
     </tr>
     <% @total_correct_rate.each_with_index do |score, i| %>
+      <% break if i >= 20 %>
       <% if i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_rate %> %</td>
@@ -88,6 +91,7 @@
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 正答率</th>
     </tr>
     <% @daily_correct_rate.each_with_index do |score, i| %>
+      <% break if i >= 20 %>
       <% if i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_correct_rate %> %</td>
@@ -111,6 +115,7 @@
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 平均正解時間</th>
     </tr>
     <% @total_average_time.each_with_index do |score, i| %>
+      <% break if i >= 20 %>
       <% if i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_average_time %> s</td>
@@ -134,6 +139,7 @@
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 平均正解時間</th>
     </tr>
     <% @daily_average_time.each_with_index do |score, i| %>
+      <% break if i >= 20 %>
       <% if i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_average_time %> s</td>
