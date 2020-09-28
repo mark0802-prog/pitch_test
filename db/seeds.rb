@@ -3,7 +3,7 @@ users = []
   password = Faker::Internet.password(min_length: 6)
   users << User.new(nickname: "test#{i}", password: password, password_confirmation: password)
 end
-User.import users, on_duplicate_key_ignore: true
+User.import users, on_duplicate_key_ignore: true, validate: false
 
 total_scores = []
 daily_scores = []
