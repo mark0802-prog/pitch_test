@@ -19,6 +19,12 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('Nickname is invalid')
     end
+    it 'すでに登録済みのニックネームは登録できない' do
+      another_user = FactoryBot.create(:user)
+      @user.nickname = another_user.nickname
+      @user.invalid?
+      expect(@user.errors.full_messages).to include('Nickname has already been taken')
+    end
     it 'パスワードが空だと保存できない' do
       @user.password = ''
       @user.password_confirmation = ''
