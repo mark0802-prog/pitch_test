@@ -11,16 +11,28 @@
 
 <div class="ranking">
   <h3>Total 正解数ランキング</h3>
-  <% if user_signed_in? %>
-    <%= "#{current_user.nickname}さんの順位は、#{@total_correct_count.size}人中#{@user_rank_tcc}位です" %>
-  <% end %>
+  <div class="user_rank_box">
+    <% if user_signed_in? %>
+      <%= "#{current_user.nickname}さんの順位は、#{@total_correct_count.size}人中" %>
+      <span class="user_rank"><%= "#{@user_rank_tcc}" %></span>
+      位です
+    <% end %>
+  </div>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 正解数</th>
     </tr>
     <% @total_correct_count.each_with_index do |score, i| %>
       <% break if i >= 20 %>
-      <% if i % 2 == 0 %>
+      <% if i % 2 == 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="even current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_count %></td>
+        </tr>
+      <% elsif i % 2 != 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="odd currnet_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_count %></td>
+        </tr>
+      <% elsif i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_count %></td>
         </tr>
@@ -35,16 +47,28 @@
 
 <div class="ranking">
   <h3>本日の 正解数ランキング</h3>
-  <% if user_signed_in? %>
-    <%= "#{current_user.nickname}さんの順位は、#{@daily_correct_count.size}人中#{@user_rank_dcc}位です" %>
-  <% end %>
+  <div class="user_rank_box">
+    <% if user_signed_in? %>
+      <%= "#{current_user.nickname}さんの順位は、#{@daily_correct_count.size}人中" %>
+      <span class="user_rank"><%= "#{@user_rank_dcc}" %></span>
+      位です
+    <% end %>
+  </div>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 正解数</th>
     </tr>
     <% @daily_correct_count.each_with_index do |score, i| %>
       <% break if i >= 20 %>
-      <% if i % 2 == 0 %>
+      <% if i % 2 == 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="even current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_correct_count %></td>
+        </tr>
+      <% elsif i % 2 != 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="odd current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_correct_count %></td>
+        </tr>
+      <% elsif i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_correct_count %></td>
         </tr>
@@ -59,16 +83,28 @@
 
 <div class="ranking">
   <h3>Total 正答率ランキング</h3>
-  <% if user_signed_in? %>
-    <%= "#{current_user.nickname}さんの順位は、#{@total_correct_rate.size}人中#{@user_rank_tcr}位です" %>
-  <% end %>
+  <div class="user_rank_box">
+    <% if user_signed_in? %>
+      <%= "#{current_user.nickname}さんの順位は、#{@total_correct_rate.size}人中" %>
+      <span class="user_rank"><%= "#{@user_rank_tcr}" %></span>
+      位です
+    <% end %>
+  </div>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 正答率</th>
     </tr>
     <% @total_correct_rate.each_with_index do |score, i| %>
       <% break if i >= 20 %>
-      <% if i % 2 == 0 %>
+      <% if i % 2 == 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="even current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_rate %> %</td>
+        </tr>
+      <% elsif i % 2 != 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="odd currnet_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_rate %> %</td>
+        </tr>
+      <% elsif i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_rate %> %</td>
         </tr>
@@ -83,16 +119,28 @@
 
 <div class="ranking">
   <h3>本日の 正答率ランキング</h3>
-  <% if user_signed_in? %>
-    <%= "#{current_user.nickname}さんの順位は、#{@daily_correct_rate.size}人中#{@user_rank_dcr}位です" %>
-  <% end %>
+  <div class="user_rank_box">
+    <% if user_signed_in? %>
+      <%= "#{current_user.nickname}さんの順位は、#{@daily_correct_rate.size}人中" %>
+      <span class="user_rank"><%= "#{@user_rank_dcr}" %></span>
+      位です
+    <% end %>
+  </div>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 正答率</th>
     </tr>
     <% @daily_correct_rate.each_with_index do |score, i| %>
       <% break if i >= 20 %>
-      <% if i % 2 == 0 %>
+      <% if i % 2 == 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="even current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_correct_rate %> %</td>
+        </tr>
+      <% elsif i % 2 != 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="odd current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_correct_rate %> %</td>
+        </tr>
+      <% elsif i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_correct_rate %> %</td>
         </tr>
@@ -107,16 +155,28 @@
 
 <div class="ranking">
   <h3>Total 平均正解時間ランキング</h3>
-  <% if user_signed_in? %>
-    <%= "#{current_user.nickname}さんの順位は、#{@total_average_time.size}人中#{@user_rank_tat}位です" %>
-  <% end %>
+  <div class="user_rank_box">
+    <% if user_signed_in? %>
+      <%= "#{current_user.nickname}さんの順位は、#{@total_average_time.size}人中" %>
+      <span class="user_rank"><%= "#{@user_rank_tat}" %></span>
+      位です
+    <% end %>
+  </div>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">Total 平均正解時間</th>
     </tr>
     <% @total_average_time.each_with_index do |score, i| %>
       <% break if i >= 20 %>
-      <% if i % 2 == 0 %>
+      <% if i % 2 == 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="even current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_average_time %> s</td>
+        </tr>
+      <% elsif i % 2 != 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="odd current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_average_time %> s</td>
+        </tr>
+      <% elsif i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_average_time %> s</td>
         </tr>
@@ -131,16 +191,28 @@
 
 <div class="ranking">
   <h3>本日の 平均正解時間ランキング</h3>
-  <% if user_signed_in? %>
-    <%= "#{current_user.nickname}さんの順位は、#{@daily_average_time.size}人中#{@user_rank_dat}位です" %>
-  <% end %>
+  <div class="user_rank_box">
+    <% if user_signed_in? %>
+      <%= "#{current_user.nickname}さんの順位は、#{@daily_average_time.size}人中" %>
+      <span class="user_rank"><%= "#{@user_rank_dat}" %></span>
+      位です
+    <% end %>
+  </div>
   <table>
     <tr>
       <th class="rank">順位</th> <th class="nickname">nickname</th> <th class="score">本日の 平均正解時間</th>
     </tr>
     <% @daily_average_time.each_with_index do |score, i| %>
       <% break if i >= 20 %>
-      <% if i % 2 == 0 %>
+      <% if i % 2 == 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="even current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_average_time %> s</td>
+        </tr>
+      <% elsif i % 2 != 0 && user_signed_in? && current_user.id == score.user_id %>
+        <tr class="odd current_user">
+          <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_average_time %> s</td>
+        </tr>
+      <% elsif i % 2 == 0 %>
         <tr class="even">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.daily_average_time %> s</td>
         </tr>

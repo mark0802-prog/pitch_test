@@ -8,6 +8,7 @@
   align-items: center;
   flex-direction: column;
   text-align: right;
+  margin-bottom: 100px;
 }
 
 table {
@@ -40,4 +41,13 @@ th {
 
 .even {
   background-color: rgba($color: rgb(0, 255, 255), $alpha: 0.3);
+}
+
+.current_user {
+  color: red;
+  font-weight: bold;
+}
+
+.user_rank {
+  font-weight: bold;
 }
