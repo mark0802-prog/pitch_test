@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, uniqueness: true, presence: true, format: {without: /\Atest/}
+  validates :nickname, uniqueness: true, presence: true, format: { without: /\Atest/ }
 
   has_one :total_score
   has_many :daily_scores

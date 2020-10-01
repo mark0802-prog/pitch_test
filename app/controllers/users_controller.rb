@@ -8,11 +8,11 @@ class UsersController < ApplicationController
     @daily_correct_rate = DailyScore.includes(:user)
                                     .where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
                                     .order(daily_correct_rate: :DESC)
-    @total_average_time = TotalScore.includes(:user).order(:total_average_time)
-    @daily_average_time = DailyScore.includes(:user)
+    @total_average_time = TotalScore.includes(:user).where.not(total_average_time: 0).order(:total_average_time)
+    @daily_average_time = DailyScore.includes(:user).where.not(daily_average_time: 0)
                                     .where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
                                     .order(:daily_average_time)
-    return if !user_signed_in?
+    return unless user_signed_in?
 
     @user_rank_tcc = user_rank(@total_correct_count)
     @user_rank_dcc = user_rank(@daily_correct_count)
@@ -26,8 +26,8 @@ class UsersController < ApplicationController
 
   def user_rank(type)
     type.each_with_index do |user_id, i|
-      return i+1 if current_user.id == user_id[:user_id]
+      return i + 1 if current_user.id == user_id[:user_id]
     end
-    return "-"
+    '-'
   end
 end
