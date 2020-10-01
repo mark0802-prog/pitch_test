@@ -29,9 +29,18 @@ function quiz() {
 
   again_button.style.display = "none"
   total_correct_rate.value = calc_rate(total_correct_count.value, total_wrong_count.value)
-  total_average_time.value = Math.round(parseFloat(total_time.value) / parseInt(total_correct_count.value) * 100) / 100
   daily_correct_rate.value = calc_rate(daily_correct_count.value, daily_wrong_count.value)
-  daily_average_time.value = Math.round(parseFloat(daily_time.value) / parseInt(daily_correct_count.value) * 100) / 100
+  if (parseInt(total_correct_count.value) == 0) {
+    total_average_time.value = 0
+  } else {
+    total_average_time.value = Math.round(parseFloat(total_time.value) / parseInt(total_correct_count.value) * 100) / 100
+  }
+  if (parseInt(daily_correct_count.value) == 0) {
+    daily_average_time.value = 0
+  } else {
+    daily_average_time.value = Math.round(parseFloat(daily_time.value) / parseInt(daily_correct_count.value) * 100) / 100
+  }
+  
 
   start_button.addEventListener("click", () => {
     const now = Tone.now()
@@ -60,10 +69,18 @@ function quiz() {
         correct.innerHTML = '<p>Correct!</p>'
         total_correct_count.value = parseInt(total_correct_count.value) + 1
         total_correct_rate.value = calc_rate(total_correct_count.value, total_wrong_count.value)
-        total_average_time.value = Math.round(parseFloat(total_time.value) / parseInt(total_correct_count.value) * 100) / 100
         daily_correct_count.value = parseInt(daily_correct_count.value) + 1
         daily_correct_rate.value = calc_rate(daily_correct_count.value, daily_wrong_count.value)
-        daily_average_time.value = Math.round(parseFloat(daily_time.value) / parseInt(daily_correct_count.value) * 100) / 100
+        if (parseInt(total_correct_count.value) == 0) {
+          total_average_time.value = 0
+        } else {
+          total_average_time.value = Math.round(parseFloat(total_time.value) / parseInt(total_correct_count.value) * 100) / 100
+        }
+        if (parseInt(daily_correct_count.value) == 0) {
+          daily_average_time.value = 0
+        } else {
+          daily_average_time.value = Math.round(parseFloat(daily_time.value) / parseInt(daily_correct_count.value) * 100) / 100
+        }
         chime_correct.play()
         if (submit_buttons != null) {
           submit_buttons.forEach((submit_button) => {
