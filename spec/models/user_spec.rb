@@ -10,18 +10,18 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
     end
     it 'ニックネームが空だと保存できない' do
-      @user.nickname = ""
+      @user.nickname = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
     it 'ニックネームが「test」から始まると保存できない' do
-      @user.nickname = "test" + @user.nickname
+      @user.nickname = 'test' + @user.nickname
       @user.valid?
-      expect(@user.errors.full_messages).to include("Nickname is invalid")
+      expect(@user.errors.full_messages).to include('Nickname is invalid')
     end
     it 'パスワードが空だと保存できない' do
-      @user.password = ""
-      @user.password_confirmation = ""
+      @user.password = ''
+      @user.password_confirmation = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Password can't be blank")
     end
@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
       @user.password = Faker::Internet.password(min_length: 2, max_length: 5)
       @user.password_confirmation = @user.password
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
     it 'パスワードとパスワード確認用が一致しないと保存できない' do
       @user.password_confirmation = FactoryBot.build(:user).password_confirmation
