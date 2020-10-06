@@ -29,7 +29,7 @@
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_count %></td>
         </tr>
       <% elsif i % 2 != 0 && user_signed_in? && current_user.id == score.user_id %>
-        <tr class="odd currnet_user">
+        <tr class="odd current_user">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_count %></td>
         </tr>
       <% elsif i % 2 == 0 %>
@@ -101,7 +101,7 @@
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_rate %> %</td>
         </tr>
       <% elsif i % 2 != 0 && user_signed_in? && current_user.id == score.user_id %>
-        <tr class="odd currnet_user">
+        <tr class="odd current_user">
           <td><%= i+1 %></td> <td><%= score.user.nickname %></td> <td><%= score.total_correct_rate %> %</td>
         </tr>
       <% elsif i % 2 == 0 %>
